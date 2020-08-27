@@ -9,7 +9,7 @@
   "license": "MIT",
   "author": "tegebu <info@tegebu.com>",
   "sideEffects": false,
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.json",
     "clean": "rimraf dist && rimraf coverage",
@@ -22,10 +22,9 @@
     "update:install": "yarn install && yarn upgrade",
     "update:upgrade": "ncu --upgrade"
   },
-  "dependencies": {
-    "@google-cloud/functions-framework": "1.7.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@google-cloud/functions-framework": "1.7.1",
     "@types/express": "4.17.7",
     "@types/jest": "26.0.10",
     "@types/node": "14.6.0",
