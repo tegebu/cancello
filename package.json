@@ -1,0 +1,12 @@
+{
+  "name": "@tegebu/cancello",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "jamashita <jamashita@arachnid.xyz>",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tegebu/cancello.git"
+  }
+}
