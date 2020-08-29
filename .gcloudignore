@@ -14,7 +14,6 @@
 .gitignore
 
 node_modules
-#!include:.gitignore
 
 .github
 .idea
