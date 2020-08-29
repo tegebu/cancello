@@ -12,7 +12,7 @@
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.json",
     "clean": "rimraf dist && rimraf coverage",
-    "develop": "functions-framework --target=hello",
+    "develop": "functions-framework --target=cancello",
     "format": "eslint --fix 'src/**/*.{ts,tsx}'",
     "start": "node dist/index.js",
     "test": "jest test --detectOpenHandles --coverage",

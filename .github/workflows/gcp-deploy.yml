@@ -24,17 +24,18 @@ jobs:
       - name: 'Configure docker to use the gcloud cli'
         run: 'gcloud auth configure-docker --quiet'
       - name: 'Deploy to Cloud Run'
+        # REMOVE --allow-unauthenticated \ in the future
         run: |
           asof=`date +%Y%m%d%H%M%S`
           IMAGE=gcr.io/$GCP_PROJECT_ID/cancello:${asof}
           docker build . -t $IMAGE
           docker push $IMAGE
-          gcloud beta functions deploy cancellosample \
+          gcloud beta functions deploy cancello \
             --allow-unauthenticated \
             --runtime nodejs12 \
             --region us-central1 \
             --project tegebu \
-            --source . \
-            --entry-point cancello \
+            --source dist/ \
             --trigger-http \
             --quiet
+
