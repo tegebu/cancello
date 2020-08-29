@@ -2,11 +2,10 @@ name: 'Deployment to Google Cloud Functions'
 on:
   push:
     branches:
-      - 'main'
+      - 'release/*'
 env:
   GCP_PROJECT_ID: '${{ secrets.GCP_PROJECT_ID }}'
   GCP_REGION: '${{ secrets.GCP_REGION }}'
-  IMAGE: 'asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/foobar:${{ github.sha }}'
 jobs:
   gcp-deploy:
     runs-on: 'ubuntu-latest'
@@ -24,20 +23,19 @@ jobs:
           export_default_credentials: true
       - name: 'Configure docker to use the gcloud cli'
         run: 'gcloud auth configure-docker --quiet'
-      - name: 'Build a docker image'
-        run: 'docker build . -t cancello'
-      - name: 'Push the docker image'
-        run: './docker-push.sh'
       - name: 'Deploy to Cloud Run'
+        # REMOVE --allow-unauthenticated \ in the future
         run: |
           asof=`date +%Y%m%d%H%M%S`
           IMAGE=gcr.io/$GCP_PROJECT_ID/cancello:${asof}
           docker build . -t $IMAGE
           docker push $IMAGE
-          gcloud run deploy cancello \
-            --image $IMAGE \
-            --platform managed \
-            --region $GCP_REGION \
-            --project $GCP_PROJECT_ID \
-            --port 8080 \
+          gcloud beta functions deploy cancello \
+            --allow-unauthenticated \
+            --runtime nodejs12 \
+            --region us-central1 \
+            --project tegebu \
+            --source dist/ \
+            --trigger-http \
             --quiet
+
