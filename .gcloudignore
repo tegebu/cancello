@@ -17,7 +17,6 @@ node_modules
 
 .github
 .idea
-!dist
 src
 .editorconfig
 .eslintignore
