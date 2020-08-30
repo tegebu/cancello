@@ -12,6 +12,10 @@ jobs:
         uses: 'actions/checkout@v2'
         with:
           ref: 'main'
+      - name: 'Transpile'
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
       - name: 'GCP Authenticate'
         uses: 'GoogleCloudPlatform/github-actions/setup-gcloud@master'
         with:
