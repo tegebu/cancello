@@ -30,7 +30,6 @@ jobs:
           gcloud beta functions deploy cancello \
             --runtime nodejs12 \
             --region ${{ secrets.GCP_REGION }} \
-            --project tegebu \
             --source dist/ \
             --trigger-http \
             --quiet
