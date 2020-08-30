@@ -27,8 +27,8 @@ jobs:
         run: 'gcloud auth configure-docker --quiet'
       - name: 'Deploy to Cloud Functions'
         run: |
-          gcloud beta functions deploy cancello \
-            --quiet
+          gcloud beta functions -quiet \
+            deploy cancello \
             --platform managed \
             --region ${{ secrets.GCP_REGION }} \
             --runtime nodejs12 \
