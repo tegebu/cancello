@@ -27,7 +27,7 @@ jobs:
         run: 'gcloud auth configure-docker --quiet'
       - name: 'Deploy to Cloud Functions'
         run: |
-          gcloud beta functions -quiet \
+          gcloud beta functions --quiet \
             deploy cancello \
             --platform managed \
             --region ${{ secrets.GCP_REGION }} \
