@@ -14,7 +14,7 @@ jobs:
           ref: 'main'
       - name: 'Transpile'
         run: |
-          yarn install --frozen-lockfile
+          yarn install --frozen-lockfile --production=true
           yarn build
       - name: 'GCP Authenticate'
         uses: 'GoogleCloudPlatform/github-actions/setup-gcloud@master'
@@ -28,9 +28,9 @@ jobs:
       - name: 'Deploy to Cloud Functions'
         run: |
           gcloud beta functions deploy cancello \
-            --runtime nodejs12 \
+            --quiet
+            --platform managed \
             --region ${{ secrets.GCP_REGION }} \
+            --runtime nodejs12 \
             --source dist/ \
             --trigger-http \
-            --platform managed \
-            --quiet
