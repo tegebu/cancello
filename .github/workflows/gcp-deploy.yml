@@ -33,4 +33,4 @@ jobs:
             --region ${{ secrets.GCP_REGION }} \
             --runtime nodejs12 \
             --source dist/ \
-            --trigger-http \
+            --trigger-http
