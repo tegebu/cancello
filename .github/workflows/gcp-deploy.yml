@@ -26,4 +26,10 @@ jobs:
       - name: 'info'
         run: 'gcloud info'
       - name: 'Deploy to Cloud Functions'
-        run: 'gcloud functions deploy cancello --region ${{ secrets.GCP_REGION }} --runtime nodejs12 --source dist/ --trigger-http --quiet'
+        run: |
+          gcloud functions deploy cancello \
+          --region ${{ secrets.GCP_REGION }} \
+          --runtime nodejs12 \
+          --source dist/ \
+          --trigger-http \
+          --quiet
