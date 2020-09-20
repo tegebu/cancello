@@ -2,7 +2,7 @@ name: 'Deployment to Google Cloud Functions'
 on:
   push:
     branches:
-      - 'releaseci.yml'
+      - 'release/*'
 jobs:
   gcp-deploy:
     runs-on: 'ubuntu-latest'
