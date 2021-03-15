@@ -17,7 +17,7 @@ v14.5.0
 1.22.5
 ```
 
-## Initialization
+## Installation
 
 ```
 yarn install
